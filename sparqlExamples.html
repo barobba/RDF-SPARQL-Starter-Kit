@@ -1,0 +1,47 @@
+<h1>Sample SPARQL Statements</h1>
+
+<p>SPARQL is the query language for RDF.</p>
+
+<h2>Select</h2>
+<pre>
+PREFIX prefix &lt;URI&gt;
+SELECT
+  *
+WHERE {
+  GRAPH ?graph {
+    ?subject ?predicate ?object .
+  }
+}
+</pre>
+
+<pre>
+PREFIX prefix &lt;URI&gt;
+SELECT
+  *
+WHERE {
+  ?subject ?predicate ?object .
+}
+</pre>
+
+<h2>Insert</h2>
+
+<!-- <div id="component-insert"></div> -->
+
+<pre>
+PREFIX prefix &lt;URI&gt;
+INSERT INTO &lt;GRAPH&gt; {
+  subject predicate object .
+}
+</pre>
+
+<h2>Update</h2>
+<p>Use DELETE then UPDATE commands together.</p>
+
+<h2>Delete</h2>
+
+<pre>
+PREFIX prefix &lt;URI&gt;
+DELETE FROM &lt;GRAPH&gt; {
+  subject predicate object .
+}
+</pre>

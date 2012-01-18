@@ -1,0 +1,15 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+<script type="text/javascript">
+  $('<pre />').load('config-example.js', function(response, status, request){
+    console.log(response);
+    var exampleScript = $('(<pre />').text(response).html();
+    $('#example-script').html(exampleScript);
+    //var escaped = this.html().text().html();
+    //$('#example-script').html(escaped);
+  });
+</script>
+
+<h1>Installation instructions</h1>
+
+<p>Here is what you need to put in the "config.js" file.</p>
+<pre id="example-script"><a href="config-example.js">Example code (open page, right click, then choose "View page source")</a></pre>

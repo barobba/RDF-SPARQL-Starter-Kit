@@ -1,0 +1,75 @@
+
+<!-- Low level JS libraries -->
+<script type="text/javascript" src="libraries/requires.js" ></script>
+<script type="text/javascript" src="libraries/StringOverrides.js" ></script>
+<script type="text/javascript" src="libraries/fvlogger/logger.js" ></script>
+
+<!-- Data libraries -->
+<script type="text/javascript" src="libraries/randomId.js" ></script>
+<script type="text/javascript" src="libraries/sparql.js" ></script>
+<script type="text/javascript" src="libraries/Sparql/SparqlNamespace.js" ></script>
+<script type="text/javascript" src="libraries/Sparql/SparqlQuery.js" ></script>
+<script type="text/javascript" src="libraries/Sparql/SparqlResultUri.js" ></script>
+<script type="text/javascript" src="libraries/Sparql/SparqlResultSet.js" ></script>
+<script type="text/javascript" src="libraries/Sparql/SparqlResultsPainter.js" ></script>
+
+<!-- UI libraries -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+<!-- <script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+<script type="text/javascript" src="components/endpointListBuilder/driver.js" ></script> -->
+
+<!-- UI libraries: jqGrid -->
+<link rel="stylesheet" type="text/css" href="libraries/jquery.ui/css/hot-sneaks/jquery-ui-1.8.17.custom.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="libraries/jqGrid/css/ui.jqgrid.css" />
+<script type="text/javascript" src="libraries/jqGrid/js/i18n/grid.locale-en.js" ></script>
+<script type="text/javascript" src="libraries/jqGrid/js/jquery.jqGrid.min.js" ></script>
+
+<!-- Google: jquery table -->
+<!-- See: http://slodive.com/freebies/jquery-table/ -->
+<script type="text/javascript" src="libraries/jquery.tableSort.js" ></script>
+<script type="text/javascript" src="libraries/json-to-table.js" ></script>
+
+<!-- SPARQL Starter Kit libraries -->
+<script type="text/javascript" src="libraries/common.js" ></script>
+<script type="text/javascript" src="libraries/rdfTripleFormatters.js" ></script>
+
+<!-- Custom page driver -->
+<script type="text/javascript" src="config.js" ></script>
+<script type="text/javascript" src="index.js" ></script>
+
+<h1>RDF/SPARQL Starter Kit</h1>
+<p>Prepared by Biagio Arobba, January 2012.</p>
+<ul>
+  <li><a href="about.html">About SPARQL Starter Kit</a></li>
+  <li><a href="installation.html">Installation instructions</a></li>
+  <li><a href="documentation.html">Documentation</a></li>
+  <li><a href="sparqlExamples.html">Example SPARQL queries</a></li>
+  <li><a href="references.html">Resources & further reading</a></li>
+</ul>
+<div id="page-messages"></div>
+
+<h2>Settings</h2>
+<dl>
+  <dt>Current Endpoint</dt>
+    <dd><div class="current-endpoint"></div></dd>
+    <!-- <div id="epCID1" class="sparql-endpoints-app"></div> -->
+  <dt>Current Graph</dt>
+    <dd><div class="current-graph"></div></dd>
+  <dt>Current Namespaces</dt>
+    <dd><table id="namespaces"></table></dd>
+</dl>
+
+<h2>Basic Insert Form</h2>
+<pre id="sparql-insert-form">
+<span class="prefixes"></span>
+INSERT INTO &lt;http://example.com/rdf/graphs/app1&gt; {
+  <input name="subject" /> <input name="predicate" /> <input name="object" /> .
+}
+<span class="query-command"><a class="insert" href="#">insert</a></span>
+</pre>
+
+<pre id="generated-sparql-command"></pre>
+
+<h2>Data</h2>
+<table id="graphs-in-use"></table>
+<table id="all-triples"></table>

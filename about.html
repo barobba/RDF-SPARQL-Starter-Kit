@@ -1,0 +1,28 @@
+<h1>About RDF/SPARQL Starter Kit</h1>
+
+<p>The starter kit is very low-level, intended to help developers get started with other tasks like creating APIs functions based on the graph contents.</p>
+<p>The starter kit makes it easy to connect to a SPARQL endpoint; configure a graph and namespaces; and insert/delete triples.</p>
+<p>A viewer is available for browsing the "triples" in the graph.</p>
+<p>The starter kit is NOT meant to "visualize" RDF graphs. Again, this is very low level for developers.</p>
+
+<h3>Future release notes:</h3>
+<p>The basic input form is working, but it could be better.</p>
+<p>Here's what I would like the form to look like in future releases.</p>
+<pre>
+Graph:     <select><option>Example app 1</option></select>
+Subject:   <select><option>contacts:</option></select><input value="ID-12345" /> <a href="#">generate</a>
+Predicate: <select><option>foaf:</option></select><input value="name" />
+Object:    <input value="Joe" />
+           <input type="radio" checked />String <input type="radio" />URI <input type="radio" />Date
+           
+           <input type="submit" />
+</pre>
+
+<p>The new form would have the following features:</p>
+<ul>
+	<li>Choosing the graph for the insert statements using select box.</li>
+  <li>A "generate" option for generating unique subject IDs, and where the generation method is pluggable.</li>
+	<li>Choosing namespaces using select box.</li>
+	<li>Choosing the type of object, using radio buttons.</li>
+  <li>Also, if more typing space is needed then it would be good to have an "expand" feature, which turns the input field into a textarea.</li>
+</ul>

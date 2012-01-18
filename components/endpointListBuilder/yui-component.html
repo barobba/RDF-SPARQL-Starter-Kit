@@ -1,0 +1,32 @@
+<div class="sparql-endpoints-app">
+  <!-- create item -->
+  <div class="item-create">
+    <div class="widget">
+      <input class="endpoint-uri" name="" value="" />
+    </div>
+  </div>
+  <!-- list items -->
+  <div class="items-list">
+  </div>
+  <!-- item template -->
+  <script type="text/x-template" class="items-item-template">
+    <!-- display item -->
+    <div class="item-display">
+      <div class="formatter">
+        <span class="endpoint-uri" tabindex="0">{endpoint-uri-display}</span>
+      </div>
+    </div>
+    <!-- update item -->
+    <div class="item-update">
+      <div class="widget">
+        <input class="endpoint-uri" value="{endpoint-uri-update}">
+      </div>
+    </div>
+    <!-- remove item -->    
+    <div class="item-remove">
+      <div class="item-remove-command">
+        <a href="#" class="command">Remove</a>
+      </div>
+    </div>
+  </script>
+</div>
