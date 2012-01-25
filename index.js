@@ -49,6 +49,7 @@ $(document).ready(function(){
     if (subject && predicate && object) {
       
       query.addTriple(subject, predicate, object);
+      //alert(query.toString());
       var sq = sparql.createQuery();
       sq.query( query.toString(), {
         success: function(resultsJson) {
@@ -93,11 +94,11 @@ function showNamespaces() {
       {name:'prefix', index:'prefix', sortable: true},
       {name:'uri', index:'uri', sortable: true}
     ],
-    rowNum:10,
+    rowNum:100,
     rowList:[10,20,30],
     pager: '#pager',
     sortname: 'subject',
-    hiddengrid: true,
+    //hiddengrid: true,
     viewrecords: true
   }); 
 }
@@ -149,11 +150,14 @@ function showAllTriples(sparql) {
   var queryString = "\
     SELECT\
       *\
+    FROM \
+      <" + currentGraph + ">\
     WHERE {\
       GRAPH ?graph {\
         ?subject ?predicate ?object\
       }\
     }\
+    ORDER BY ASC(?subject) ASC(?predicate) ASC(?object)\
     LIMIT " + resultLimit + "\
   ";
   query.query( queryString, {
@@ -169,14 +173,16 @@ function showAllTriples(sparql) {
       $('#all-triples').jqGrid({
         datatype: 'local',
         data: grid,
-        caption: 'RDF Store (All Graphs)',
+        caption: 'RDF Store &lt;'+ currentGraph +'&gt;',
         colNames: ['graph', 'subject', 'predicate', 'object'],
         colModel: [
           {name:'graph', index:'graph', sortable: true, hidden: true}, 
-          {name:'subject', index:'subject', sortable: true}, 
-          {name:'predicate', index:'predicate', sortable: true}, 
+          {name:'subject', index:'subject', sortable: true, width: 75}, 
+          {name:'predicate', index:'predicate', sortable: true, width: 50}, 
           {name:'object', index:'object', sortable: true}, 
         ],
+        width: 750,
+        height: 500,
         /*
         grouping: true,
         groupingView: {
@@ -184,10 +190,10 @@ function showAllTriples(sparql) {
           groupDataSorted: true,
         },
         */
-        rowNum:10,
+        rowNum:resultLimit,
         rowList:[10,20,30],
         pager: '#pager',
-        sortname: 'subject',
+        //sortname: 'subject',
         viewrecords: true
       }); 
       
