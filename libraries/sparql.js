@@ -248,7 +248,7 @@ SPARQL.Query = function(service, priority) {
 	var _named_graphs = clone_obj(service.namedGraphs());
 	var _prefix_map = clone_obj(service.prefixes());
 	var _user_query = ''; // doesn't include auto-generated prefix declarations
-    var _method = service.method();
+  var _method = service.method();
 	var _output = service.output();
 	var _priority = priority || 0;
 	var _request_headers = clone_obj(service.requestHeaders());
@@ -399,8 +399,8 @@ SPARQL.Query = function(service, priority) {
 	this.defaultGraphs = function() { return _default_graphs; };
 	this.namedGraphs = function() { return _named_graphs; };
 	this.prefixes = function() { return _prefix_map; };
-    this.method = function() { return _method; };
-    this.requestHeaders = function() { return _request_headers; };
+  this.method = function() { return _method; };
+  this.requestHeaders = function() { return _request_headers; };
 
 
     /**
