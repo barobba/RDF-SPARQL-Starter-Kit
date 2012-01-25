@@ -37,29 +37,17 @@
 <script type="text/javascript" src="config.js" ></script>
 <script type="text/javascript" src="index.js" ></script>
 
-<h1>RDF/SPARQL Starter Kit</h1>
-<p>Prepared by Biagio Arobba, January 2012.</p>
-<ul>
-  <li><a href="about.html">About SPARQL Starter Kit</a></li>
-  <li><a href="installation.html">Installation instructions</a></li>
-  <li><a href="currentSettings.html">Current settings</a></li>
-  <li><a href="documentation.html">Documentation</a></li>
-  <li><a href="sparqlExamples.html">Example SPARQL queries</a></li>
-  <li><a href="references.html">Resources & further reading</a></li>
-</ul>
-<div id="page-messages"></div>
 
-<h2>Basic Insert Form</h2>
-<pre id="sparql-insert-form">
-<span class="prefixes"></span>
-INSERT INTO &lt;http://example.com/rdf/graphs/app1&gt; {
-  <input name="subject" /> <input name="predicate" /> <input name="object" /> .
-}
-<span class="query-command"><a class="insert" href="#">insert</a></span>
-</pre>
 
-<pre id="generated-sparql-command"></pre>
 
-<h2>Data</h2>
-<table id="graphs-in-use"></table>
-<table id="all-triples"></table>
+
+<h2>Settings</h2>
+<dl>
+  <dt>Current Endpoint</dt>
+    <dd><div class="current-endpoint"></div></dd>
+    <!-- <div id="epCID1" class="sparql-endpoints-app"></div> -->
+  <dt>Current Graph</dt>
+    <dd><div class="current-graph"></div></dd>
+  <dt>Current Namespaces</dt>
+    <dd><table id="namespaces"></table></dd>
+</dl>
