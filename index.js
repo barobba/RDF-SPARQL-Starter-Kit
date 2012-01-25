@@ -11,7 +11,19 @@ $(document).ready(function(){
   }
   
   // Initialize SPARQL query engine
-  sparql = new SPARQL.Service(currentEndpoint);
+  if (currentKeyForReading) {
+    sparqlForReading = new SPARQL.Service(currentEndpoint + '?key=' + currentKeyForReading);
+  }
+  else {
+    sparqlForReading = new SPARQL.Service(currentEndpoint);
+  }
+
+  if (currentKeyForWriting) {
+    sparqlForWriting = new SPARQL.Service(currentEndpoint + '?key=' + currentKeyForWriting);
+  }
+  else {
+    sparqlForWriting = new SPARQL.Service(currentEndpoint);
+  }
   
   // Initialize "nsObjects" variable
   nsObjects = [];
@@ -50,7 +62,7 @@ $(document).ready(function(){
       
       query.addTriple(subject, predicate, object);
       //alert(query.toString());
-      var sq = sparql.createQuery();
+      var sq = sparqlForWriting.createQuery();
       sq.query( query.toString(), {
         success: function(resultsJson) {
           // Refresh the page
@@ -79,8 +91,8 @@ $(document).ready(function(){
   showNamespaces(namespaces);
   
   // Data
-  showGraphsInUse(sparql);
-  showAllTriples(sparql);
+  showGraphsInUse(sparqlForReading);
+  showAllTriples(sparqlForReading);
   
 });
 
