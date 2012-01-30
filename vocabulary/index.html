@@ -1,0 +1,80 @@
+<link rel="stylesheet" type="text/css" href="../common/form.css" />
+<link rel="stylesheet" type="text/css" href="index.css" />
+
+
+<!-- Data libraries -->
+<script type="text/javascript" src="../libraries/randomId.js" ></script>
+<script type="text/javascript" src="../libraries/uuid.js" ></script>
+<script type="text/javascript" src="../libraries/sparql.js" ></script>
+<script type="text/javascript" src="../libraries/Sparql/SparqlNamespace.js" ></script>
+<script type="text/javascript" src="../libraries/Sparql/SparqlQuery.js" ></script>
+<script type="text/javascript" src="../libraries/Sparql/SparqlResultUri.js" ></script>
+<script type="text/javascript" src="../libraries/Sparql/SparqlResultSet.js" ></script>
+
+<!-- UI libraries -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+
+<!-- Page driver -->
+<script type="text/javascript" src="../config.js" ></script>
+<script type="text/javascript" src="../common/initialize.js" ></script>
+<script type="text/javascript" src="index.js" ></script>
+
+
+
+<h2>Vocabularies</h2>
+
+<h2>Vocabulary terms</h2>
+<select id="vocabularies" name="vocabularies"></select>
+<div id="vocab-terms"></div>
+
+<div id="term-add-form">
+  <div>
+    <h2>Add new term class</h2>
+  </div>
+  <form id="term-add-form">
+    <dl>
+      <dt>Term label</dt>
+      <dd>
+        <input id="term-label" name="term-label" value="My term" class="text" />
+      </dd>
+      <dt>Term class name (machine name)</dt>
+      <dd>
+        <select id="term-prefix" name="term-prefix" class="text"></select>
+        <input id="term-class-name" name="term-class-name" value="MyTerm" class="text" />
+        <div>Capitalize the first letter of each word and remove spaces.</div>
+      </dd>
+    </dl>
+    <input id="term-add-form-submit" type="submit" value="Add term" />
+  </form>
+</div>
+
+<h1>Vocabulary classes</h1>
+
+<div id="vocab-classes"></div>
+
+<div id="vocab-add-form">
+  <div>
+    <h2>Add new vocabulary class</h2>
+  </div>
+  <form id="vocab-add-form">
+    <dl>
+      <dt>Vocabulary label</dt>
+      <dd>
+        <input id="vocab-label" name="vocab-label" value="My vocabulary" class="text" />
+      </dd>
+      <dt>Vocabulary class name (machine name)</dt>
+      <dd>
+        <select id="vocab-prefix" name="vocab-prefix" class="text"></select>
+        <input id="vocab-class-name" name="vocab-class-name" value="MyVocab" class="text" />
+        <div>Capitalize the first letter of each word and remove spaces.</div>
+      </dd>
+      <!-- 
+      <dt>Namespace for the terms</dt>
+      <dd>
+        <span id="currentRdfScope"></span> <input id="vocab-terms-uri" name="vocab-terms-uri" value="http://" class="text" />
+      </dd>
+      -->
+    </dl>
+    <input id="vocab-add-form-submit" type="submit" value="Add vocabulary" />
+  </form>
+</div>

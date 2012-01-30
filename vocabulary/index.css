@@ -1,0 +1,20 @@
+@CHARSET "ISO-8859-1";
+
+#term-add-form,
+#vocab-add-form {
+	width: 600px;
+}
+
+#term-add-form input#term-label,
+#vocab-add-form input#vocab-label {
+	width: 200px;
+}
+
+#term-add-form input#term-class-name,
+#vocab-add-form input#vocab-class-name {
+	width: 200px;
+}
+
+#vocab-add-form input#vocab-terms-uri {
+  width: 200px;
+}
