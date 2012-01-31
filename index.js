@@ -1,51 +1,9 @@
 
 $(document).ready(function(){
-
-  // Prepare basic query
-  var query = new SparqlQuery(currentGraph, resultLimit);
-  query.command = 'insert';
-  for (nsIndex in nsObjects) {
-    var namespace = nsObjects[nsIndex];
-    query.addNamespace(namespace);
-  }
   
-  //
-  // PAGE MODIFICATIONS
-  //
-  
-  // Update query form
-  prefixesHtml = $('<pre />').text(query.namespacesToString()).html();
-  $('.prefixes').html(prefixesHtml);
-  $('.query-command a.insert').click(function(event){
-    
-    event.preventDefault();
-    
-    // Get variables
-    var subject = $('#sparql-insert-form input[name=subject]').attr('value');
-    var predicate = $('#sparql-insert-form input[name=predicate]').attr('value');
-    var object = $('#sparql-insert-form input[name=object]').attr('value');
-    if (subject && predicate && object) {
-      
-      query.addTriple(subject, predicate, object);
-      //alert(query.toString());
-      var sq = sparqlForWriting.createQuery();
-      sq.query( query.toString(), {
-        success: function(resultsJson) {
-          // Refresh the page
-          // TODO: Instead of refresh, this should re-load the jqGrid data.
-          window.location.reload();
-        },
-        failure: function() { 
-          alert('Insert failed'); 
-        }
-      });
-      
-    }
-    else {
-      alert('Triple needs to be filled in');
-    }
-    
-  });
+  checkboxShowHideControl('#sparql-insert-form-checkbox', '#sparql-insert-form-container');
+  insertFormControl();
+  clearAllGraphTriplesControl();
   
   // Show current endpoint
   $('div.current-endpoint').html($('<a />').attr('href', currentEndpoint).html(currentEndpoint));
@@ -60,7 +18,73 @@ $(document).ready(function(){
   showGraphsInUse(sparqlForReading);
   showAllTriples(sparqlForReading);
   
+    
 });
+
+
+function clearAllGraphTriplesControl() {
+  $('#clear-all-graph-triples').button();
+  $('#clear-all-graph-triples').click(function(event){
+    event.preventDefault();
+    if (confirm('This will remove all the triples for the current graph. Press OK to proceed.')) {
+      query = "DELETE FROM <" + currentGraph + ">";
+      sparqlForWriting.createQuery().query( query, {
+        success: function(resultsJson) {
+          // TODO: Instead of refresh, this should re-load the jqGrid data.
+          window.location.reload();
+        },
+        failure: function() { 
+          alert('Clear failed'); 
+        }
+      });
+    }
+  });
+}
+
+function insertFormControl() {
+  
+  // Query
+  var query = new SparqlQuery(currentGraph, resultLimit);
+  query.command = 'insert';
+  for (nsIndex in nsObjects) {
+    var namespace = nsObjects[nsIndex];
+    query.addNamespace(namespace);
+  }
+  prefixesHtml = $('<pre />').text(query.namespacesToString()).html();
+  $('.prefixes').html(prefixesHtml);
+  
+  // Insert event
+  $('.query-command a.insert').click(function(event){
+    event.preventDefault();
+    // Get variables
+    var subject = $('#sparql-insert-form input[name=subject]').attr('value');
+    var predicate = $('#sparql-insert-form input[name=predicate]').attr('value');
+    var object = $('#sparql-insert-form input[name=object]').attr('value');
+    if (subject && predicate && object) {
+      query.addTriple(subject, predicate, object);
+      //alert(query.toString());
+      var sq = sparqlForWriting.createQuery();
+      sq.query( query.toString(), {
+        success: function(resultsJson) {
+          // Refresh the page
+          // TODO: Instead of refresh, this should re-load the jqGrid data.
+          window.location.reload();
+        },
+        failure: function() { 
+          alert('Insert failed'); 
+        }
+      });
+    }
+    else {
+      alert('Triple needs to be filled in');
+    }
+  });
+  
+  $('#sparql-insert-form-container a.insert').button();
+
+}
+
+
 
 function showNamespaces() {
   $('#namespaces').jqGrid({
@@ -177,4 +201,16 @@ function showAllTriples(sparql) {
       
     } // end success:
   }); // end query
+}
+
+function checkboxShowHideControl(checkboxSelector, toggleSelector) {
+  $(toggleSelector).hide();
+  $(checkboxSelector).click(function(event){
+    if (this.checked) {
+      $(toggleSelector).show('fast');
+    }
+    else {
+      $(toggleSelector).hide('fast');
+    }
+  });
 }
