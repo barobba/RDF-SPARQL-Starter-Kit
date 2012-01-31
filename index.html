@@ -20,6 +20,7 @@
 <script type="text/javascript" src="components/endpointListBuilder/driver.js" ></script> -->
 
 <!-- UI libraries: jqGrid -->
+<script type="text/javascript" src="libraries/jquery.ui/js/jquery-ui-1.8.17.custom.min.js" ></script>
 <link rel="stylesheet" type="text/css" href="libraries/jquery.ui/css/hot-sneaks/jquery-ui-1.8.17.custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="libraries/jqGrid/css/ui.jqgrid.css" />
 <script type="text/javascript" src="libraries/jqGrid/js/i18n/grid.locale-en.js" ></script>
@@ -55,17 +56,26 @@
 
 <div id="page-messages"></div>
 
-<h2>Basic Insert Form</h2>
+<div>
+	<div><input id="sparql-insert-form-checkbox" type="checkbox" /> <label for="sparql-insert-form-checkbox">Show basic Insert Form</label></div>
+ 	<div id="sparql-insert-form-container">
+	
 <pre id="sparql-insert-form">
 <span class="prefixes"></span>
 INSERT INTO &lt;http://example.com/rdf/graphs/app1&gt; {
   <input name="subject" /> <input name="predicate" /> <input name="object" /> .
 }
-<span class="query-command"><a class="insert" href="#">insert</a></span>
 </pre>
+
+	  <span class="query-command"><a class="insert" href="#">insert</a></span>
+  </div>
+</div>
 
 <pre id="generated-sparql-command"></pre>
 
 <h2>Data</h2>
+
+<p><a id="clear-all-graph-triples" href="#">Clear all graph data</a></p>
+
 <table id="graphs-in-use"></table>
 <table id="all-triples"></table>
